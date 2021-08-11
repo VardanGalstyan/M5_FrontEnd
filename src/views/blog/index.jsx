@@ -2,16 +2,19 @@ import React, { Component } from "react";
 import { Container, Image } from "react-bootstrap";
 import { withRouter } from "react-router";
 import BlogAuthor from "../../components/blog/blog-author";
-import posts from "../../data/posts.json";
 import "./styles.css";
+
+
 class Blog extends Component {
+
   state = {
     blog: {},
     loading: true,
   };
+
   componentDidMount() {
+    const posts = this.props.posts
     const { id } = this.props.match.params;
-    console.log(posts);
     const blog = posts.find((post) => post._id.toString() === id);
     if (blog) {
       this.setState({ blog, loading: false });
